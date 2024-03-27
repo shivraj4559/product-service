@@ -15,7 +15,7 @@ stages:
     cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"
     cfOrg: "f952e3e1trial"
     cfSpace: "dev"
-    cfAppName: "product-service"
+    cfAppName: "product-service-hana"
     cfCredentialsId: "deployment-credential-to-cf"
     deployType: "standard"
     npmExecuteEndToEndTests: false
@@ -26,7 +26,7 @@ stages:
     cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"
     cfOrg: "f952e3e1trial"
     cfSpace: "dev"
-    cfAppName: "product-service"
+    cfAppName: "product-service-hana"
     cfCredentialsId: "deployment-credential-to-cf"
     deployType: "standard"
     tmsUpload: false
