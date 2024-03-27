@@ -1,0 +1,42 @@
+    ---
+general:
+  buildTool: "maven"
+service:
+  buildToolVersion: "MVNJ11" #see SAP Continuous Integration and Delivery service for more build tool version options
+stages:
+  Build:
+    mavenExecuteStaticCodeChecks: false
+    npmExecuteLint: false
+    verbose: true
+  Additional Unit Tests:
+    npmExecuteScripts: false
+  Acceptance:
+    cloudFoundryDeploy: false
+    cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"
+    cfOrg: "f952e3e1trial"
+    cfSpace: "dev"
+    cfAppName: "product-service"
+    cfCredentialsId: "deployment-credential-to-cf"
+    deployType: "standard"
+    npmExecuteEndToEndTests: false
+  Compliance:
+    sonarExecuteScan: false
+  Release:
+    cloudFoundryDeploy: true
+    cfApiEndpoint: "https://api.cf.us10-001.hana.ondemand.com"
+    cfOrg: "f952e3e1trial"
+    cfSpace: "dev"
+    cfAppName: "product-service"
+    cfCredentialsId: "deployment-credential-to-cf"
+    deployType: "standard"
+    tmsUpload: false
+steps:
+  artifactPrepareVersion:
+    versioningType: "cloud_noTag"
+  npmExecuteLint:
+    failOnError: true
+  cloudFoundryDeploy:
+    mtaDeployParameters: "-f --version-rule ALL"
+  tmsUpload:
+    nodeName: "qa"
+    credentialsId: "tms-sk"
